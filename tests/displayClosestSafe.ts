@@ -1,16 +1,19 @@
 import { describe, it } from 'mocha';
 import { expect } from 'chai';
-import { DisplayHex } from '../src/observers/displayHex';
 import { JSDOM } from 'jsdom';
+import {DisplayClosestSafe} from "../src/observers/displayClosestSafe";
 
 const globalAny:any = global;
 
-describe('DisplayHex transformation rule', () => {
+describe('DisplayClosestSafe transformation rule', () => {
     let provider = [
         {val: `#000000`, expected: `#000000`},
         {val: `#FFFFFF`, expected: `#FFFFFF`},
-        {val: `#555555`, expected: `#555555`},
-        {val: `#56A3F1`, expected: `#56A3F1`}
+        {val: `#555555`, expected: `#666666`},
+        {val: `#56A3F1`, expected: `#6699FF`},
+        {val: `#4F623E`, expected: `#666633`},
+        {val: `#1188DD`, expected: `#0099CC`},
+        {val: `#F18947`, expected: `#FF9933`}
     ]
 
     beforeEach(() => {
@@ -24,8 +27,8 @@ describe('DisplayHex transformation rule', () => {
 
     provider.forEach(run => {
         it(`should transform '${run.val}' correctly`, () => {
-            let displayHex = new DisplayHex('foo');
-            expect(displayHex.transformHex(run.val)).to.equal(run.expected);
+            let displayClosestSafe = new DisplayClosestSafe('foo');
+            expect(displayClosestSafe.transformHex(run.val)).to.equal(run.expected);
         });
     });
 });

@@ -23,7 +23,7 @@ describe('DisplayRgb transformation rule', () => {
     });
 
     provider.forEach(run => {
-        it(`should return '${run.val}' correctly`, () => {
+        it(`should transform '${run.val}' correctly`, () => {
             let displayRgb = new DisplayRgb('foo');
             expect(displayRgb.transformHex(run.val)).to.equal(run.expected);
         });
