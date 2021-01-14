@@ -33,10 +33,10 @@ If all is working well you should see a blue screen with the words "Hello from T
 Update src/html/index.html with whatever content you like but make sure the index_bundle script include is 
 left at the bottom so your code logic is included.
 
-The app entry point is src/index.tsx, so you can add any typescript there you like.
+The app entry point is src/index.ts, so you can add any typescript there you like.
 
 Add any additional typescript classes or modules should be added to the src/ts directory 
-which can then be imported as normal into the main index.tsx file.
+which can then be imported as normal into the main index.ts file.
 
 Styling is done via SCSS, and for convenience there is a src/scss/main.scss file which includes a basic css reset.
 

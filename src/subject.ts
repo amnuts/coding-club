@@ -3,7 +3,7 @@ import { randomColour, rgbToHex } from "./utils";
 
 export class Subject
 {
-    public observers: Array<Observer>;
+    public observers: Array<Observer> = [];
     public hex: string;
     protected timer: ReturnType<typeof setTimeout>;
 
@@ -20,7 +20,7 @@ export class Subject
         this.observers.push(observer);
     }
 
-    public detatch(observer: Observer)
+    public detach(observer: Observer)
     {
         let index = this.observers.findIndex(o => o === observer);
         if (index !== -1) {
@@ -30,7 +30,9 @@ export class Subject
 
     public notify()
     {
-        this.observers.forEach(o => o.update(this));
+        if (this.observers) {
+            this.observers.forEach(o => o.update(this));
+        }
     }
 
     public getValue(): string
