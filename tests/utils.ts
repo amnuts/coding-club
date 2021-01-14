@@ -1,24 +1,17 @@
 import { describe, it } from 'mocha';
 import { expect } from 'chai';
-import {hexToRgb, RandomColour} from '../src/utils';
+import { rgbToHex, hexToRgb, randomColour, Rgb } from '../src/utils';
 
-describe('RandomColourUnitTests', () => {
+describe(`RandomColourUnitTests`, () => {
     it(`should have created a value`, () => {
-        const hex = RandomColour.hex();
-        expect(hex).to.be.a('string');
+        const hex = randomColour();
         expect(hex).to.not.be.empty;
+        expect(hex).to.be.a(`object`);
+        expect(hex).to.have.keys([`r`, `g`, `b`]);
     });
-
-    for (let i = 0; i < 10; i++) {
-        it(`should have the correct format attempt ${i+1}`, () => {
-            let hex = RandomColour.hex();
-            expect(hex).to.match(/^#([a-f\d]){2}([a-f\d]){2}([a-f\d]){2}$/i);
-        });
-    }
 });
 
-
-describe('HexToRgbUnitTests', () => {
+describe(`HexToRgbUnitTests`, () => {
     let provider = [
         {val: `#000000`, expected: {r: 0, g: 0, b: 0}},
         {val: `#FFFFFF`, expected: {r: 255, g: 255, b: 255}},
@@ -43,5 +36,20 @@ describe('HexToRgbUnitTests', () => {
             expect(JSON.stringify(hexToRgb(run.val))).to.equal(JSON.stringify(run.expected));
         });
     });
+});
 
+
+describe('RgbToHexUnitTests', () => {
+    let provider = [
+        {val: {r: 0, g: 0, b: 0}, expected: `#000000`},
+        {val: {r: 255, g: 255, b: 255}, expected: `#FFFFFF`},
+        {val: {r: 85, g: 85, b: 85}, expected: `#555555`},
+        {val: {r: 86, g: 163, b: 241}, expected: `#56A3F1`}
+    ]
+
+    provider.forEach(run => {
+        it(`should convert '${JSON.stringify(run.val)}' correctly`, () => {
+            expect(rgbToHex(run.val)).to.equal(run.expected);
+        });
+    });
 });

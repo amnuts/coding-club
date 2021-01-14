@@ -1,5 +1,5 @@
 import { Observer } from "./observers/observerAbstract";
-import { RandomColour } from "./utils";
+import { randomColour, rgbToHex } from "./utils";
 
 export class Subject
 {
@@ -10,7 +10,7 @@ export class Subject
     public constructor()
     {
         this.timer = setInterval(() => {
-            this.hex = RandomColour.hex();
+            this.hex = rgbToHex(randomColour());
             this.notify();
         }, 1000);
     }

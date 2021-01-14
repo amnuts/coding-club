@@ -4,25 +4,21 @@ interface Rgb {
     b: number;
 }
 
-class RandomColour
+function randomColour(): Rgb
 {
-    public static hex(): string
-    {
-        const rgb: Rgb = RandomColour.getRandomRgb();
-        return `#` + Object.keys(rgb).map(c => {
-            const hex = rgb[c as keyof Rgb].toString(16);
-            return hex.length == 1 ? `0` + hex : hex;
-        }).join('')
-    }
+    return {
+        r: Math.floor(Math.random() * 255),
+        g: Math.floor(Math.random() * 255),
+        b: Math.floor(Math.random() * 255)
+    };
+}
 
-    private static getRandomRgb(): Rgb
-    {
-        return {
-            r: Math.floor(Math.random() * 255),
-            g: Math.floor(Math.random() * 255),
-            b: Math.floor(Math.random() * 255)
-        }
-    }
+function rgbToHex(rgb: Rgb): string
+{
+    return `#` + Object.keys(rgb).map(c => {
+        const hex = rgb[c as keyof Rgb].toString(16);
+        return hex.length == 1 ? `0` + hex : hex;
+    }).join('').toUpperCase();
 }
 
 function hexToRgb(hex: string): Rgb
@@ -38,5 +34,5 @@ function hexToRgb(hex: string): Rgb
 }
 
 export {
-    Rgb, RandomColour, hexToRgb
+    Rgb, randomColour, hexToRgb, rgbToHex
 }
