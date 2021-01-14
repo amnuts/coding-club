@@ -1,16 +1,16 @@
 import { describe, it } from 'mocha';
 import { expect } from 'chai';
-import { DisplayHex } from '../src/observers/displayHex';
 import { JSDOM } from 'jsdom';
+import { DisplayRgb } from '../src/observers/displayRgb';
 
 const globalAny:any = global;
 
-describe('DisplayHex transformation rule', () => {
+describe('DisplayRgb transformation rule', () => {
     let provider = [
-        {val: `#000000`, expected: `#000000`},
-        {val: `#FFFFFF`, expected: `#FFFFFF`},
-        {val: `#555555`, expected: `#555555`},
-        {val: `#56A3F1`, expected: `#56A3F1`}
+        {val: `#000000`, expected: `rgb(0,0,0)`},
+        {val: `#FFFFFF`, expected: `rgb(255,255,255)`},
+        {val: `#555555`, expected: `rgb(85,85,85)`},
+        {val: `#56A3F1`, expected: `rgb(86,163,241)`}
     ]
 
     beforeEach(() => {
@@ -24,8 +24,8 @@ describe('DisplayHex transformation rule', () => {
 
     provider.forEach(run => {
         it(`should return '${run.val}' correctly`, () => {
-            let displayHex = new DisplayHex('foo');
-            expect(displayHex.transformHex(run.val)).to.equal(run.expected);
+            let displayRgb = new DisplayRgb('foo');
+            expect(displayRgb.transformHex(run.val)).to.equal(run.expected);
         });
     });
 });

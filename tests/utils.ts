@@ -20,22 +20,22 @@ describe('RandomColourUnitTests', () => {
 
 describe('HexToRgbUnitTests', () => {
     let provider = [
-        {val: '#000000', expected: {r: 0, g: 0, b: 0}},
-        {val: '#FFFFFF', expected: {r: 255, g: 255, b: 255}},
-        {val: '#555555', expected: {r: 85, g: 85, b: 85}},
-        {val: '#56A3F1', expected: {r: 86, g: 163, b: 241}},
-        {val: '#000', expected: {r: 0, g: 0, b: 0}},
-        {val: '#FFF', expected: {r: 255, g: 255, b: 255}},
-        {val: '#555', expected: {r: 85, g: 85, b: 85}},
-        {val: '#5AF', expected: {r: 85, g: 170, b: 255}},
-        {val: '000000', expected: {r: 0, g: 0, b: 0}},
-        {val: 'FFFFFF', expected: {r: 255, g: 255, b: 255}},
-        {val: '555555', expected: {r: 85, g: 85, b: 85}},
-        {val: '56A3F1', expected: {r: 86, g: 163, b: 241}},
-        {val: '000', expected: {r: 0, g: 0, b: 0}},
-        {val: 'FFF', expected: {r: 255, g: 255, b: 255}},
-        {val: '555', expected: {r: 85, g: 85, b: 85}},
-        {val: '5AF', expected: {r: 85, g: 170, b: 255}},
+        {val: `#000000`, expected: {r: 0, g: 0, b: 0}},
+        {val: `#FFFFFF`, expected: {r: 255, g: 255, b: 255}},
+        {val: `#555555`, expected: {r: 85, g: 85, b: 85}},
+        {val: `#56A3F1`, expected: {r: 86, g: 163, b: 241}},
+        {val: `#000`, expected: {r: 0, g: 0, b: 0}},
+        {val: `#FFF`, expected: {r: 255, g: 255, b: 255}},
+        {val: `#555`, expected: {r: 85, g: 85, b: 85}},
+        {val: `#5AF`, expected: {r: 85, g: 170, b: 255}},
+        {val: `000000`, expected: {r: 0, g: 0, b: 0}},
+        {val: `FFFFFF`, expected: {r: 255, g: 255, b: 255}},
+        {val: `555555`, expected: {r: 85, g: 85, b: 85}},
+        {val: `56A3F1`, expected: {r: 86, g: 163, b: 241}},
+        {val: `000`, expected: {r: 0, g: 0, b: 0}},
+        {val: `FFF`, expected: {r: 255, g: 255, b: 255}},
+        {val: `555`, expected: {r: 85, g: 85, b: 85}},
+        {val: `5AF`, expected: {r: 85, g: 170, b: 255}},
     ]
 
     provider.forEach(run => {

@@ -6,6 +6,6 @@ export class DisplayRgb extends Observer
     public transformHex(hex: string): string
     {
         let rgb: Rgb = hexToRgb(hex);
-        return `rgba(${rgb.r},${rgb.g},${rgb.b})`;
+        return `rgb(${rgb.r},${rgb.g},${rgb.b})`;
     }
 }
