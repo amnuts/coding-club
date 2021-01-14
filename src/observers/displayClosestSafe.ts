@@ -1,5 +1,5 @@
 import { Observer } from "./observerAbstract";
-import {hexToRgb, Rgb, rgbToHex} from "../utils";
+import { hexToRgb, Rgb, rgbToHex } from "../utils";
 
 export class DisplayClosestSafe extends Observer
 {
