@@ -1,7 +1,7 @@
 {
-  "name": "typescript-starter",
+  "name": "observer-pattern",
   "version": "1.0.0",
-  "description": "Installs the necessary requirements for a basic typescript and sass project using webpack",
+  "description": "Code club exercise to create an observer pattern",
   "main": "index.js",
   "scripts": {
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'",
@@ -12,12 +12,8 @@
     "type": "git",
     "url": "git+ssh://git@bitbucket.org/chapmaninc/typescript-starter.git"
   },
-  "author": "",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/chapmaninc/typescript-starter#readme",
+  "license": "MIT",
   "dependencies": {
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
     "tslib": "^2.1.0",
     "webpack": "^5.11.1"
   },
@@ -25,8 +21,6 @@
     "@types/chai": "^4.2.14",
     "@types/jsdom": "^16.2.6",
     "@types/mocha": "^8.2.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
     "chai": "^4.2.0",
     "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^5.0.1",
