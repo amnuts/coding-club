@@ -1,7 +1,7 @@
 {
-  "name": "observer-pattern",
-  "version": "1.0.0",
-  "description": "Code club exercise to create an observer pattern",
+  "name": "pubsub-pattern",
+  "version": "2.0.0",
+  "description": "Code club exercises",
   "main": "index.js",
   "scripts": {
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'",
@@ -15,6 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "tslib": "^2.1.0",
+    "uuid": "^8.3.2",
     "webpack": "^5.11.1"
   },
   "devDependencies": {

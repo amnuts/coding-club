@@ -3,28 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Observer example</title>
+    <title>EventBus PubSub example</title>
 </head>
 
-<body style="padding: 0; margin: 0;">
+<body>
 
-    <section id="observers">
-        <div id="hex">
-            <p></p>
-            <input type="checkbox" id="hexAttach" title="Display colour as hex value" />
-        </div>
-        <div id="rgb">
-            <p></p>
-            <input type="checkbox" id="rgbAttach" title="Display colour as rgb value" />
-        </div>
-        <div id="safe">
-            <p></p>
-            <input type="checkbox" id="safeAttach" title="Display colour as nearest safe colour as hex" />
-        </div>
-        <div id="inverse">
-            <p></p>
-            <input type="checkbox" id="inverseAttach" title="Display colour as the inverse of the hex colour" />
-        </div>
+    <section id="subscribers">
+        <div id="colour"></div>
+        <div id="deltax"></div>
+        <div id="deltay"></div>
+        <div id="deltaxy"></div>
+        <div id="opacity" style="top:60px;left:60px;background-color:#36f2d8"></div>
+        <div id="colouropacitydeltaxy"></div>
     </section>
 
     <script type="text/javascript" src="index_bundle.js"></script>

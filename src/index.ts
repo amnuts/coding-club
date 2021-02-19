@@ -1,30 +1,25 @@
-import {Subject} from "./subject";
-import {DisplayHex} from "./observers/displayHex";
-import {DisplayRgb} from "./observers/displayRgb";
-import {DisplayClosestSafe} from "./observers/displayClosestSafe";
-import {DisplayInverse} from "./observers/displayInverse";
+import "./scss/main.scss";
+import {EventType, EventBus} from "./EventBus";
+import {Colour} from "./subscribers/Colour";
+import {DeltaX} from "./subscribers/DeltaX";
+import {DeltaY} from "./subscribers/DeltaY";
+import {Opacity} from "./subscribers/Opacity";
+import {randomColour, rgbToHex, randomInt} from "./utils";
 
-let subject = new Subject();
+let bus = new EventBus();
+let cSubscribers = new Colour(['colour', 'colouropacitydeltaxy']);
+let xSubscribers = new DeltaX(['deltax', 'deltaxy', 'colouropacitydeltaxy']);
+let ySubscribers = new DeltaY(['deltay', 'deltaxy', 'colouropacitydeltaxy']);
+let oSubscribers = new Opacity(['opacity', 'colouropacitydeltaxy']);
 
-let hexObserver = new DisplayHex('hex');
-let rgbObserver = new DisplayRgb('rgb');
-let safeObserver = new DisplayClosestSafe('safe');
-let inverseObserver = new DisplayInverse('inverse');
+bus.sub(EventType.Colour, cSubscribers);
+bus.sub(EventType.DeltaPositionX, xSubscribers);
+bus.sub(EventType.DeltaPositionY, ySubscribers);
+bus.sub(EventType.Opacity, oSubscribers);
 
-let map = {
-    hexAttach: hexObserver,
-    rgbAttach: rgbObserver,
-    safeAttach: safeObserver,
-    inverseAttach: inverseObserver
-};
+window.setInterval(() => bus.pub(EventType.Colour, rgbToHex(randomColour())), 1000);
+window.setInterval(() => bus.pub(EventType.DeltaPositionX, randomInt(0, 100)), 200);
+window.setInterval(() => bus.pub(EventType.DeltaPositionY, randomInt(0, 100)), 200);
+window.setInterval(() => bus.pub(EventType.Opacity, Math.random()), 500);
 
-Object.entries(map).forEach(entry => {
-    const [id, observer] = entry;
-    document.getElementById(id).addEventListener('change', (e) => {
-        if ((<HTMLInputElement> e.target).checked) {
-            subject.attach(observer);
-        } else {
-            subject.detach(observer);
-        }
-    });
-});
+

@@ -1,6 +1,6 @@
 # Overview
 
-Coding club exercise: observer pattern
+Coding club exercises.  Each exercise is tagged, so check out the releases.
 
 ## Installation instructions
 

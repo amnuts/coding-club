@@ -46,7 +46,7 @@ module.exports = {
         }),
     ],
     resolve: {
-        extensions: [ '.tsx', '.ts', '.js' ],
+        extensions: [ '.tsx', '.ts', '.js', '.scss' ],
     },
     output: {
         filename: 'index_bundle.js',

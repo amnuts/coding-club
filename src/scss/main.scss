@@ -3,43 +3,23 @@
 html, body {
   height: 100%;
   margin: 0;
+  padding: 0;
 }
 
-#observers {
-  min-height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-evenly;
+body {
+  padding: 1em;
+}
+
+#subscribers {
+  width: 1000px;
+  height: 1000px;
+  border: 2px solid grey;
+  position: relative;
   div {
-    display: flex;
-    flex-basis: calc(50% - 80px);
-    justify-content: center;
-    flex-direction: column;
+    width: 50px;
+    height: 50px;
     border: 1px solid #dedede;
-    margin: 20px;
-    align-items: center;
-    * {
-      display: flex;
-      justify-content: center;
-      flex-direction: row;
-    }
-    p {
-      flex-grow: 1;
-      align-items: center;
-    }
-    input {
-      flex-shrink: 1;
-      height: 30px;
-      width: 30px;
-    }
+    position: absolute;
+    transition: all 0.5s ease;
   }
-}
-
-
-.grid2x2 {
-}
-.grid2x2 > div {
-}
-.grid2x2 > div > div {
 }
