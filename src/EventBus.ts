@@ -8,7 +8,7 @@ export enum EventType {
     Opacity = 'opacity'
 }
 
-export class EventBus implements Interfaces
+export class EventBus implements EventBusInterface
 {
     public subscribers: {[key: string]: Subscriber[]} = {};
 

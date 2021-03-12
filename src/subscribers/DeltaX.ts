@@ -2,7 +2,7 @@ import {Subscribable} from "./Subscribable";
 
 export class DeltaX extends Subscribable implements Subscriber
 {
-    receive(message: EventMessage)
+    receive(message: EventMessage): void
     {
         this.domElements.forEach(e => {
             let current: number = parseInt(

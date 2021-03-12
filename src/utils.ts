@@ -1,8 +1,4 @@
-interface Rgb {
-    r: number;
-    g: number;
-    b: number;
-}
+import "./Interfaces";
 
 function randomInt(min: number, max: number): number
 {
@@ -41,5 +37,5 @@ function hexToRgb(hex: string): Rgb
 }
 
 export {
-    Rgb, randomColour, hexToRgb, rgbToHex, randomInt
+    randomColour, hexToRgb, rgbToHex, randomInt
 }
