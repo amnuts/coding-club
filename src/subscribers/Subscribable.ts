@@ -1,6 +1,6 @@
 import "../Interfaces";
 
-export abstract class Subscribable implements SubscribableInterface
+export abstract class Subscribable
 {
     protected domElements: Array<HTMLDivElement> = [];
 
@@ -14,5 +14,5 @@ export abstract class Subscribable implements SubscribableInterface
         });
     }
 
-    abstract receive(message: EventMessage): void;
+    abstract receive(message: EventMessageInterface): void;
 }

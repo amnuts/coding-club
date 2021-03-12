@@ -10,9 +10,9 @@ export enum EventType {
 
 export class EventBus implements EventBusInterface
 {
-    public subscribers: {[key: string]: Subscriber[]} = {};
+    public subscribers: {[key: string]: SubscriberInterface[]} = {};
 
-    public sub(topic: any, subscriber: Subscriber)
+    public sub(topic: any, subscriber: SubscriberInterface)
     {
         if (!this.subscribers[topic]) {
             this.subscribers[topic] = []
@@ -20,7 +20,7 @@ export class EventBus implements EventBusInterface
         this.subscribers[topic].push(subscriber);
     }
 
-    public unsub(topic: any, subscriber: Subscriber)
+    public unsub(topic: any, subscriber: SubscriberInterface)
     {
         if (!this.subscribers[topic]) {
             return;
@@ -39,7 +39,7 @@ export class EventBus implements EventBusInterface
             return;
         }
 
-        let msg: EventMessage = {
+        let msg: EventMessageInterface = {
             created:  (new Date()).getTime(),
             id: uuid4(),
             payload,

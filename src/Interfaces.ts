@@ -1,18 +1,14 @@
-interface SubscribableInterface {
-    receive(message: EventMessage): void;
-}
-
 interface EventBusInterface {
-    sub(topic: any, subscriber: Subscriber): void;
-    unsub(topic: any, subscriber: Subscriber): void;
+    sub(topic: any, subscriber: SubscriberInterface): void;
+    unsub(topic: any, subscriber: SubscriberInterface): void;
     pub(topic: any, payload: any): void;
 }
 
-interface Subscriber {
-    receive(message: EventMessage): void
+interface SubscriberInterface {
+    receive(message: EventMessageInterface): void
 }
 
-interface EventMessage {
+interface EventMessageInterface {
     payload: any;
     created: number;
     id: any;

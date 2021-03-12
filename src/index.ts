@@ -1,4 +1,5 @@
 import "./scss/main.scss";
+import "./Interfaces";
 import {EventType, EventBus} from "./EventBus";
 import {Colour} from "./subscribers/Colour";
 import {DeltaX} from "./subscribers/DeltaX";

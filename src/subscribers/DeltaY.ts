@@ -1,8 +1,9 @@
+import "../Interfaces";
 import {Subscribable} from "./Subscribable";
 
-export class DeltaY extends Subscribable implements Subscriber
+export class DeltaY extends Subscribable
 {
-    receive(message: EventMessage): void
+    receive(message: EventMessageInterface): void
     {
         this.domElements.forEach(e => {
             let current: number = parseInt(
