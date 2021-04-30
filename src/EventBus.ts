@@ -1,5 +1,6 @@
-import "./Interfaces";
+import './Interfaces';
 import { v4 as uuid4 } from 'uuid';
+import DataStore from './DataStore';
 
 export enum EventType {
     Colour = 'colour',
@@ -11,6 +12,14 @@ export enum EventType {
 export class EventBus implements EventBusInterface
 {
     public subscribers: {[key: string]: SubscriberInterface[]} = {};
+    private datastore: DataStore;
+    public tableName: string = 'events';
+
+    public constructor(datastore: DataStore)
+    {
+        this.datastore = datastore;
+        this.datastore.createObjectStore();
+    }
 
     public sub(topic: any, subscriber: SubscriberInterface)
     {
@@ -46,6 +55,12 @@ export class EventBus implements EventBusInterface
             type: topic
         }
 
-        this.subscribers[topic].forEach(s => s.receive(msg));
+        const putMessageIntoDatastore = async (tableName: string) => {
+            await this.datastore.put(tableName, msg);
+        }
+
+        putMessageIntoDatastore(this.tableName).then(() => {
+            this.subscribers[topic].forEach(s => s.receive(msg));
+        });
     }
 }

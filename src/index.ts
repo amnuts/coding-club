@@ -6,8 +6,9 @@ import {DeltaX} from "./subscribers/DeltaX";
 import {DeltaY} from "./subscribers/DeltaY";
 import {Opacity} from "./subscribers/Opacity";
 import {randomColour, rgbToHex, randomInt} from "./utils";
+import DataStore from './DataStore';
 
-let bus = new EventBus();
+let bus = new EventBus(new DataStore('eventStore'));
 let cSubscribers = new Colour(['colour', 'colouropacitydeltaxy']);
 let xSubscribers = new DeltaX(['deltax', 'deltaxy', 'colouropacitydeltaxy']);
 let ySubscribers = new DeltaY(['deltay', 'deltaxy', 'colouropacitydeltaxy']);
