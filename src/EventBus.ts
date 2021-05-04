@@ -1,6 +1,4 @@
-import './Interfaces';
-import { v4 as uuid4 } from 'uuid';
-import DataStore from './DataStore';
+import {EventBusInterface, EventMessageInterface, SubscriberInterface} from "./Interfaces";
 
 export enum EventType {
     Colour = 'colour',
@@ -12,14 +10,6 @@ export enum EventType {
 export class EventBus implements EventBusInterface
 {
     public subscribers: {[key: string]: SubscriberInterface[]} = {};
-    private datastore: DataStore;
-    public tableName: string = 'events';
-
-    public constructor(datastore: DataStore)
-    {
-        this.datastore = datastore;
-        this.datastore.createObjectStore();
-    }
 
     public sub(topic: any, subscriber: SubscriberInterface)
     {
@@ -42,25 +32,13 @@ export class EventBus implements EventBusInterface
         }
     }
 
-    public pub(topic: any, payload: any)
+    public pub(msg: EventMessageInterface)
     {
-        if (!this.subscribers[topic]) {
+        if (!this.subscribers[msg.getTopic()]) {
             return;
         }
 
-        let msg: EventMessageInterface = {
-            created:  (new Date()).getTime(),
-            id: uuid4(),
-            payload,
-            type: topic
-        }
-
-        const putMessageIntoDatastore = async (tableName: string) => {
-            await this.datastore.put(tableName, msg);
-        }
-
-        putMessageIntoDatastore(this.tableName).then(() => {
-            this.subscribers[topic].forEach(s => s.receive(msg));
-        });
+        console.log(`Publishing ${JSON.stringify(msg)}`);
+        this.subscribers[msg.getTopic()].forEach(s => s.receive(msg));
     }
 }

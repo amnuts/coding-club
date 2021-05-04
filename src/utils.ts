@@ -1,4 +1,4 @@
-import "./Interfaces";
+import {Rgb} from "./Interfaces";
 
 function randomInt(min: number, max: number): number
 {

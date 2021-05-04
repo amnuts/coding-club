@@ -1,4 +1,4 @@
-import "../Interfaces";
+import {EventMessageInterface} from "../Interfaces";
 
 export abstract class Subscribable
 {

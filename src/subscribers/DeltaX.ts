@@ -1,5 +1,5 @@
-import "../Interfaces";
 import {Subscribable} from "./Subscribable";
+import {EventMessageInterface} from "../Interfaces";
 
 export class DeltaX extends Subscribable
 {
@@ -9,7 +9,7 @@ export class DeltaX extends Subscribable
             let current: number = parseInt(
                 e.style.left.replace(/px$/, '')
             ) || 0;
-            let newPos: number = current + message.payload;
+            let newPos: number = current + message.getPayload();
             e.style.left = (newPos > 1000 ? 0 : newPos) + `px`;
         });
     }

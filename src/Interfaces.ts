@@ -1,22 +1,41 @@
-interface EventBusInterface {
+// @ts-ignore
+import {DBSchema} from "idb/with-async-ittr";
+
+export interface EventBusInterface {
     sub(topic: any, subscriber: SubscriberInterface): void;
     unsub(topic: any, subscriber: SubscriberInterface): void;
-    pub(topic: any, payload: any): void;
+    pub(payload: any): void;
 }
 
-interface SubscriberInterface {
+export interface EventStoreInterface {
+    getAll(): any;
+    put(value: object): void;
+}
+
+export interface SubscriberInterface {
     receive(message: EventMessageInterface): void
 }
 
-interface EventMessageInterface {
-    payload: any;
-    created: number;
-    id: any;
-    type: string
+export interface EventMessageInterface {
+    getPayload(): any;
+    getCreated(): number;
+    getId(): any;
+    getTopic(): string
 }
 
-interface Rgb {
+export interface Rgb {
     r: number;
     g: number;
     b: number;
 }
+
+export interface EventStoreSchema extends DBSchema {
+    events: {
+        value: {
+            topic: any,
+            payload: EventMessageInterface
+        };
+        key: string;
+    };
+}
+

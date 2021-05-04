@@ -30,3 +30,11 @@ body {
     transition: all 0.5s ease;
   }
 }
+
+#buttons {
+  display: flex;
+  align-content: space-around;
+  > button {
+    flex: 1;
+  }
+}
